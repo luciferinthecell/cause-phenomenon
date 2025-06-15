@@ -1,0 +1,28 @@
+# === HarinAgent System Map (v6.0) ===
+
+pipeline:
+  - input: User message
+  - interpret: recursive_reasoner.introspect
+  - simulate: recursive_reasoner.simulate
+  - evaluate: recursive_reasoner.evaluate
+  - reflect: recursive_reasoner.reflect
+  - reroute: recursive_reasoner.reroute
+  - verify: self_verifier.verify
+  - correct: output_corrector.correct
+  - finalize: recursive_reasoner.respond
+  - archive: session_archiver.record
+
+memory:
+  - store: palantirgraph.add_node
+  - retrieve: memory_conductor.recommend
+  - trace: trace_register.log_event
+
+identity:
+  - shards: identity_fragments.IdentityFragmentStore
+  - role_alignment: conscience_cluster.evaluate
+  - persona_injection: prompt_architect.embed_identity
+
+validation:
+  - scoring: ScoreVector
+  - ethics: conscience_cluster
+  - trust: self_verifier
